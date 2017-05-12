@@ -51,4 +51,3 @@ eventEmitter.on('data_received', function(){
 eventEmitter.emit('connection');
 
 console.log("Program Ended.");
->>>>>>> Stashed changes
