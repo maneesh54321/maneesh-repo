@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	
+	<!-- specifies the Web application display name, a short name that can be displayed by GUI tools. -->
+	<display-name>Spring MVC App</display-name>
+	
+	<!-- defining a servlet dispatcher which will handle all the requests(requests matching "Servlet Mapping") coming to the servlet container -->
+	<servlet>
+		<servlet-name>SpringController</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<init-param>
+			<!-- instance variable of "org.springframework.web.servlet.DispatcherServlet" class. Class will find the servlet xml file on this location -->
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring-mvc.xml</param-value>
+		</init-param>
+		<!-- tells the servlet container to load this servlet as soon as the container starts -->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<!-- redirecting the urls which matches "url-pattern" to the servlet having "servlet-name"-->
+	<servlet-mapping>
+		<servlet-name>SpringController</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+	<welcome-file-list>  
+   		<welcome-file>/WEB-INF/views/home.html</welcome-file>
+  	</welcome-file-list>
+  	
+</web-app>
