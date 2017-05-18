@@ -89,3 +89,4 @@ ee.on('test', function () {
 });
 
 ee.emit('test', 'Hello', 'my', 'world!');
+console.log("Program Ended.");
