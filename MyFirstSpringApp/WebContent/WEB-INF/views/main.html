@@ -3,10 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Main Page</title>
+<script src="js/angular.min.js"></script>
+<script src="js/home.js"></script>
 </head>
-<body>
+<body data-ng-app="myFirstSpringApp" data-ng-controller="homePageController as Ctrl">
 	<header>This is the main page header</header>
-	<section>This is the Main Page Content</section>
+	<section style="background-color:blue">	
+		<p>{{responseData}}</p>
+		<p>{{data}}</p>
+		<button data-ng-click="gotoController()">Click Me</button>		
+	</section>
 	<footer>This is the main page footer</footer>
 </body>
 </html>

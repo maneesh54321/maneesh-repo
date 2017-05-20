@@ -14,6 +14,8 @@
 	
 	<!-- Ensures that any resource requests not handled by Spring MVC mappings will be delegated back to the Servlet container -->
     <!-- <mvc:default-servlet-handler /> -->
+    
+    <!-- maps the static resources(e.g. js, css, html etc) to a path else static resources can not be used -->
 	<mvc:resources mapping="/resources/**" location="/WEB-INF/views/" />
 	
 	<bean name="internalResourceViewResolver"

@@ -20,6 +20,6 @@ public class SpringAppController {
 	@RequestMapping(value = "/getData", method = RequestMethod.GET)
 	public String getData() {
 		Logger.getLogger("MyFirstSpringApp").log(Level.INFO, "Entered the Controller");
-		return "home";
+		return "controllerHome";
 	}
 }
