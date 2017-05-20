@@ -11,9 +11,6 @@
 	<context:component-scan base-package="com.spring.controller"/>
 	<context:component-scan base-package="com.spring.service"/>
 	<context:component-scan base-package="com.spring.dao"/>
-	
-	<!-- Ensures that any resource requests not handled by Spring MVC mappings will be delegated back to the Servlet container -->
-    <!-- <mvc:default-servlet-handler /> -->
     
     <!-- maps the static resources(e.g. js, css, html etc) to a path else static resources can not be used -->
 	<mvc:resources mapping="/resources/**" location="/WEB-INF/views/" />

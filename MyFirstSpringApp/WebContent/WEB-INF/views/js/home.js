@@ -7,7 +7,7 @@ myFirstSpringApp.controller('homePageController', ['$scope','$http', function($s
 	
 	$scope.gotoController=function(){
 		alert("Button to click hua hai");
-		$http.get("/controller/getData").success(function(responseData){
+		$http.get("/FirstSpringApp/controller/getData").then(function(responseData){
 			$scope.responseData=responseData;
 		});;
 	};
