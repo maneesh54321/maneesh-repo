@@ -13,18 +13,20 @@
 	<context:component-scan base-package="com.spring.dao"/>
     
     <!-- maps the static resources(e.g. js, css, html etc) to a path else static resources can not be used -->
-	<mvc:resources mapping="/resources/**" location="/WEB-INF/views/" />
+	<!-- <mvc:resources mapping="/resources/**" location="/WEB-INF/views/" /> -->
 	
 	<mvc:annotation-driven />
 	
-	<bean name="internalResourceViewResolver"
+	<!-- <bean name="internalResourceViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
 			<value>/WEB-INF/views/</value>
 		</property>
 		<property name="suffix">
-			<value>.jsp</value>
+			<value>.html</value>
 		</property>
-	</bean>
+	</bean> -->
+	
+	<mvc:default-servlet-handler />
 	
 </beans>

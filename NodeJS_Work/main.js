@@ -4,10 +4,8 @@ http.createServer(function(request,response){
 	response.writeHead(200,{'Content-Type':'text/plain'});
 	response.end("Hello World\n");
 }).listen(8081);
-<<<<<<< Updated upstream
 
 console.log("Server running at http://localhost:8081");
-=======
 console.log("Server running at http://localhost:8081");*/
 
 /*var fs=require("fs");
@@ -21,7 +19,6 @@ fs.readFile('input.txt', function (err, data) {
    console.log(data.toString());
 });
 console.log("Program Ended");*/
-
 
 var events = require('events');
 
@@ -46,6 +43,24 @@ eventEmitter.on('newListener',handler);
 
 // Bind the connection event with the handler
 eventEmitter.on('connection', connectHandler1);
+
+// Import events module
+var events = require('events');
+
+
+// Create an eventEmitter object
+var eventEmitter = new events.EventEmitter();
+
+// Create an event handler as follows
+var connectHandler = function connected() {
+   console.log('connection succesful.');
+  
+   // Fire the data_received event 
+   eventEmitter.emit('data_received');
+}
+
+// Bind the connection event with the handler
+eventEmitter.on('connection', connectHandler);
  
 // Bind the data_received event with the anonymous function
 eventEmitter.on('data_received', function(){
@@ -89,4 +104,9 @@ ee.on('test', function () {
 });
 
 ee.emit('test', 'Hello', 'my', 'world!');
+console.log("Program Ended.");
+
+// Fire the connection event 
+eventEmitter.emit('connection');
+
 console.log("Program Ended.");

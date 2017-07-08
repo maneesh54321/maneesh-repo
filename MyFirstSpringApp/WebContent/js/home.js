@@ -6,7 +6,6 @@ myFirstSpringApp.controller('homePageController', ['$scope','$http', function($s
 	$scope.responseData="abhi controller mein nahi gaya hai";
 	
 	$scope.gotoController=function(){
-		alert("Button to click hua hai");
 		$http.get("controller/getData").then(function(response){
 			$scope.responseData=response.data;
 		});;
