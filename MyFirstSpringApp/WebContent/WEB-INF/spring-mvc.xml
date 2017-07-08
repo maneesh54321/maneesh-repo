@@ -11,22 +11,15 @@
 	<context:component-scan base-package="com.spring.controller"/>
 	<context:component-scan base-package="com.spring.service"/>
 	<context:component-scan base-package="com.spring.dao"/>
-    
-    <!-- maps the static resources(e.g. js, css, html etc) to a path else static resources can not be used -->
-	<!-- <mvc:resources mapping="/resources/**" location="/WEB-INF/views/" /> -->
 	
 	<mvc:annotation-driven />
 	
-	<!-- <bean name="internalResourceViewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix">
-			<value>/WEB-INF/views/</value>
-		</property>
-		<property name="suffix">
-			<value>.html</value>
-		</property>
-	</bean> -->
+	<!-- maps the static resources(e.g. js, css, html etc) to a path else static resources can not be used -->
+	<!-- <mvc:resources mapping="/resources/**" location="/WEB-INF/views/" /> -->
 	
+	<!-- This is used to redirect all the request coming to this dispatcher servlet to the default servlet, 
+	should be placed in "LAST" so that the request which are going for controller reaches controller and requests 
+	for static resources will go to default servlet, replaces the <mvc:resources /> -->
 	<mvc:default-servlet-handler />
 	
 </beans>

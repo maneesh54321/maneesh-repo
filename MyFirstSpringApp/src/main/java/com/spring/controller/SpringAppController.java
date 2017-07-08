@@ -22,6 +22,6 @@ public class SpringAppController {
 	@ResponseBody
 	public String getData() {
 		Logger.getLogger("MyFirstSpringApp").log(Level.INFO, "Entered the Controller");
-		return "main";
+		return springAppService.getAppName();
 	}
 }
