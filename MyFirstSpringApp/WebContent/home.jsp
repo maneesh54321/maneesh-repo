@@ -10,7 +10,7 @@
 		<h3>My Website's Header</h3>
 	</header>
 	<section style="background-color: green;">
-		<a href="NestedFolder/nestedMain.html">Goto Main Page</a>
+		<a href="CC/resourceDashboard.html">Goto Main Page</a>
 	</section>
 	<footer style="background-color: red">
 		<h3>My Website's Footer</h3>

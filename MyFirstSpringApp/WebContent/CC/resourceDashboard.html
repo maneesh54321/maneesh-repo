@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Main Page</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="js/angular.min.js"></script>
+<script src="js/dirPagination.js"></script>
+<script src="js/resourceDashboard.js"></script>
+</head>
+<body data-ng-app="myFirstSpringApp"
+	data-ng-controller="homePageController as Ctrl">
+	<header>This is the main page header</header>
+	<section>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Resource Name</th>
+					<th>Resource Type</th>
+					<th>Propagation Type</th>
+					<th>LOB</th>
+					<th>Service Area</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr dir-paginate="resource in pageOfResources | itemsPerPage: 10">
+					<td>{{resource.resourceName}}</td>
+					<td>{{resource.resourceType}}</td>
+					<td>{{resource.propagationType}}</td>
+					<td>{{resource.lob}}</td>
+					<td>{{resource.serviceArea}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<dir-pagination-controls boundary-links="true" direction-links="true">
+		</dir-pagination-controls>
+	</section>
+	<footer>This is the main page footer</footer>
+</body>
+</html>

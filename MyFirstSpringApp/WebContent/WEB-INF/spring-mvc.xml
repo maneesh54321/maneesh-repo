@@ -1,25 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
 						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
-						http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
-	
+						http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+						http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
 	<!-- will scan the mentioned packages for annotated beans -->
-	<context:component-scan base-package="com.spring.controller"/>
-	<context:component-scan base-package="com.spring.service"/>
-	<context:component-scan base-package="com.spring.dao"/>
+	<context:component-scan base-package="com.spring.controller" />
+	<context:component-scan base-package="com.spring.service" />
+	<context:component-scan base-package="com.spring.dao" />
+	<context:component-scan base-package="com.spring.model" />
+
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/testdb" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+	</bean>
+
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="packagesToScan" value="com.spring.model" />
+		<property name="dataSource" ref="dataSource" />
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+			</props>
+		</property>
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"></bean>
+		</property>
+
+	</bean>
 	
-	<mvc:annotation-driven />
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory"/>
+	</bean>
 	
-	<!-- maps the static resources(e.g. js, css, html etc) to a path else static resources can not be used -->
+	<bean class="org.springframework.data.web.config.SpringDataWebConfiguration" />
+	
+	<jpa:repositories base-package="com.spring.repositories" 
+	entity-manager-factory-ref="entityManagerFactory"
+	transaction-manager-ref="transactionManager"/>
+
+	<!-- maps the static resources(e.g. js, css, html etc) to a path else static 
+		resources can not be used -->
 	<!-- <mvc:resources mapping="/resources/**" location="/WEB-INF/views/" /> -->
-	
-	<!-- This is used to redirect all the request coming to this dispatcher servlet to the default servlet, 
-	should be placed in "LAST" so that the request which are going for controller reaches controller and requests 
-	for static resources will go to default servlet, replaces the <mvc:resources /> -->
+
+	<!-- This is used to redirect all the request coming to this dispatcher 
+		servlet to the default servlet, should be placed in "LAST" so that the request 
+		which are going for controller reaches controller and requests for static 
+		resources will go to default servlet, replaces the <mvc:resources /> -->
 	<mvc:default-servlet-handler />
-	
+
 </beans>

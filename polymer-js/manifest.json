@@ -1,0 +1,7 @@
+{
+  "name": "testApplication",
+  "short_name": "testApplication",
+  "description": "test-description",
+  "start_url": "/",
+  "display": "standalone"
+}
