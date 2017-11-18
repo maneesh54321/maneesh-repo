@@ -23,7 +23,10 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr dir-paginate="resource in pageOfResources | itemsPerPage: 10">
+				<tr
+					dir-paginate="resource in pagination.pageOfResources | itemsPerPage: pagination.itemsPerPage"
+					current-page="pagination.currentPage"
+					total-items="pagination.totalItems">
 					<td>{{resource.resourceName}}</td>
 					<td>{{resource.resourceType}}</td>
 					<td>{{resource.propagationType}}</td>
@@ -32,8 +35,7 @@
 				</tr>
 			</tbody>
 		</table>
-		<dir-pagination-controls boundary-links="true" direction-links="true">
-		</dir-pagination-controls>
+		<dir-pagination-controls on-page-change="" boundary-links="true" direction-links="true"></dir-pagination-controls>
 	</section>
 	<footer>This is the main page footer</footer>
 </body>

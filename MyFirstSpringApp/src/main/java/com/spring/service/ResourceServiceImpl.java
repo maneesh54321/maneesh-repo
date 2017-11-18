@@ -10,16 +10,15 @@ import com.spring.repositories.ResourceRepository;
 
 @Service
 public class ResourceServiceImpl {
-	
+
 	@Autowired
 	ResourceRepository resourceRepository;
-	
-	public Page<ResourceVO> retrieveAllResources(Pageable pageable){
-		Page<ResourceVO> resourcePage=null;
+
+	public Page<ResourceVO> retrieveAllResources(Pageable pageable) {
+		Page<ResourceVO> resourcePage = null;
 		try {
-			resourcePage=resourceRepository.findAll(pageable).map(resource->{
-				ResourceVO resourceVO=new ResourceVO(null, null,
-						resource.getResourceName(), resource.getResourceType(),
+			resourcePage = resourceRepository.findAll(pageable).map(resource -> {
+				ResourceVO resourceVO = new ResourceVO(null, resource.getResourceName(), resource.getResourceType(),
 						resource.getPropagationType(), resource.getLob(), resource.getServiceArea());
 				return resourceVO;
 			});

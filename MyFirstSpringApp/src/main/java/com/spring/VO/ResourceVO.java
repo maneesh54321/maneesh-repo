@@ -2,9 +2,7 @@ package com.spring.VO;
 
 public class ResourceVO {
 
-	private Integer id;
-
-	private String resourceId;
+	private Integer resourceId;
 
 	private String resourceName;
 
@@ -16,10 +14,9 @@ public class ResourceVO {
 
 	private String serviceArea;
 
-	public ResourceVO(Integer id, String resourceId, String resourceName, String resourceType, String propagationType,
+	public ResourceVO(Integer resourceId, String resourceName, String resourceType, String propagationType,
 			String lob, String serviceArea) {
 		super();
-		this.id = id;
 		this.resourceId = resourceId;
 		this.resourceName = resourceName;
 		this.resourceType = resourceType;
@@ -28,19 +25,11 @@ public class ResourceVO {
 		this.serviceArea = serviceArea;
 	}
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getResourceId() {
+	public Integer getResourceId() {
 		return resourceId;
 	}
 
-	public void setResourceId(String resourceId) {
+	public void setResourceId(Integer resourceId) {
 		this.resourceId = resourceId;
 	}
 

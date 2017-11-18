@@ -1,15 +1,32 @@
-var myFirstSpringApp = angular.module('myFirstSpringApp',[]);
+var myFirstSpringApp = angular.module('myFirstSpringApp', []);
 
-myFirstSpringApp.controller('homePageController', ['$scope','$http', function($scope,$http) {
-	$scope.pageNumber=1;
-	$scope.size=10;
-	$scope.retrievePageOfResources=function(){
-		$http.get("/MyFirstSpringApp/resourceController/getPageOfResources?page="+$scope.pageNumber+"&size="+$scope.size).then(function(response){
-			alert(JSON.stringify(response));
-			$scope.pageOfResources=response.data;
-			alert(JSON.stringify($scope.resources));
-		});
-	};
-	
-	$scope.retrievePageOfResources();
-}]);
+myFirstSpringApp
+		.controller(
+				'homePageController',
+				function($scope, dataService) {
+					$scope.pagination = {};
+					$scope.pagination.currentPage = 1;
+					$scope.pagination.itemsPerPage = 5;
+					$scope.retrievePageOfResources = function() {
+						dataService
+								.getResources($scope.pagination)
+								.then(
+										function(response) {
+											$scope.pagination.pageOfResources = response.data.content;
+											$scope.pagination.totalItems = response.data.content.length;
+										});
+					};
+
+					$scope.retrievePageOfResources();
+				});
+
+myFirstSpringApp.service('dataService', function($http) {
+	return {
+		getResources : function(pagination) {
+			let url = "/MyFirstSpringApp/resourceController/getPageOfResources"
+					+ "?page=" + pagination.currentPage + "&size="
+					+ pagination.itemsPerPage;
+			return $http.get(url);
+		}
+	}
+});

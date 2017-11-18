@@ -1,26 +1,20 @@
 package com.spring.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "iap_anlt_resource")
-public class Resource implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
+@Table(name = "resource")
+public class Resource {
+	
 	@Id
-	private Integer id;
-
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "resource_id")
-	private String resourceId;
+	private Integer resourceId;
 
 	@Column(name = "resource_name")
 	private String resourceName;
@@ -34,22 +28,13 @@ public class Resource implements Serializable {
 	private String lob;
 
 	@Column(name = "service_area")
-
 	private String serviceArea;
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getResourceId() {
+	public Integer getResourceId() {
 		return resourceId;
 	}
 
-	public void setResourceId(String resourceId) {
+	public void setResourceId(Integer resourceId) {
 		this.resourceId = resourceId;
 	}
 
