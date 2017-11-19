@@ -13,6 +13,10 @@ public class ResourceVO {
 	private String lob;
 
 	private String serviceArea;
+	
+	public ResourceVO() {
+		super();
+	}
 
 	public ResourceVO(Integer resourceId, String resourceName, String resourceType, String propagationType,
 			String lob, String serviceArea) {

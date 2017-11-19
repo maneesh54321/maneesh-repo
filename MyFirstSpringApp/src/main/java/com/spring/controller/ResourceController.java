@@ -28,4 +28,14 @@ public class ResourceController {
 		ResponseEntity<Page<ResourceVO>> response=new ResponseEntity<Page<ResourceVO>>(pageOfResources, HttpStatus.OK);
 		return response;
 	}
+	
+	@RequestMapping(value="/getResourceById", method=RequestMethod.GET)
+	public ResponseEntity<ResourceVO> getResourceById(@RequestParam Integer id){
+		return new ResponseEntity<ResourceVO>(resourceServiceImpl.getResourceById(id), HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/getResourceByName", method=RequestMethod.GET)
+	public ResponseEntity<ResourceVO> getResourceByName(@RequestParam String name){
+		return new ResponseEntity<ResourceVO>(resourceServiceImpl.getResourceByName(name), HttpStatus.OK);
+	}
 }

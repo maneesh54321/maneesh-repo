@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.spring.VO.ResourceVO;
+import com.spring.model.Resource;
 import com.spring.repositories.ResourceRepository;
 
 @Service
@@ -26,5 +27,30 @@ public class ResourceServiceImpl {
 			e.printStackTrace();
 		}
 		return resourcePage;
+	}
+	
+	public ResourceVO getResourceById(Integer id) {		
+		Resource resource=resourceRepository.getResourceByResourceId(id);
+		ResourceVO vo=new ResourceVO();
+		vo.setResourceId(resource.getResourceId());
+		vo.setResourceName(resource.getResourceName());
+		vo.setResourceType(resource.getResourceType());
+		vo.setLob(resource.getLob());
+		vo.setPropagationType(resource.getPropagationType());
+		vo.setServiceArea(resource.getServiceArea());
+		return vo;
+	}
+	
+
+	public ResourceVO getResourceByName(String name) {		
+		Resource resource=resourceRepository.getResourceByResourceName(name);
+		ResourceVO vo=new ResourceVO();
+		vo.setResourceId(resource.getResourceId());
+		vo.setResourceName(resource.getResourceName());
+		vo.setResourceType(resource.getResourceType());
+		vo.setLob(resource.getLob());
+		vo.setPropagationType(resource.getPropagationType());
+		vo.setServiceArea(resource.getServiceArea());
+		return vo;
 	}
 }
