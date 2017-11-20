@@ -49,9 +49,13 @@
 	entity-manager-factory-ref="resourceEntityManagerFactory"
 	transaction-manager-ref="resourceTransactionManager"/>
 	
+	<bean name="elasticsearchTemplate" class="org.springframework.data.elasticsearch.core.ElasticsearchTemplate">
+        <constructor-arg name="client" ref="client"/>
+    </bean>
+    
 	<elasticsearch:repositories base-package="com.spring.repositories" />
 	
-	<elasticsearch:transport-client id="client" cluster-nodes="localhost:9200" />
+	<elasticsearch:transport-client id="client" cluster-name="Maneesh" cluster-nodes="127.0.0.1:9300" />
 
 	<!-- maps the static resources(e.g. js, css, html etc) to a path else static 
 		resources can not be used -->

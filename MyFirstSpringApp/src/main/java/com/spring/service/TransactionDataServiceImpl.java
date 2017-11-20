@@ -1,5 +1,6 @@
 package com.spring.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import com.spring.repositories.TransactionRepository;
 @Service
 public class TransactionDataServiceImpl {
 	
+	@Autowired
 	private TransactionRepository txnRepository;
 	
 	public Page<TransactionVO> getAllTransactions(Pageable pageable) {
